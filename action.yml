@@ -18,6 +18,10 @@ inputs:
     description: 'Force test run to use Godot Mono version'
     required: false
     default: 'false'
+  godot-steam-version:
+    description: 'The Godot Steam version to use (e.g., "g441-s162-gs415"). If not set, the action will use the Godot version specified.'
+    required: false
+    default: ''
   version:
     description: 'The version of GdUnit4 to use. (e.g. "v4.2.0", "latest", "master").'
     required: false
@@ -107,6 +111,7 @@ runs:
         godot-version: ${{ inputs.godot-version }}
         godot-net: ${{inputs.godot-net == 'true' || inputs.godot-force-mono == 'true'}}
         godot-status-version: ${{ inputs.godot-status }}
+        godot-steam-version: ${{ inputs.godot-steam-version }}
         install-path: '/home/runner/godot-linux'
 
     - name: 'print restored version - ${{ inputs.version }}'
